@@ -3,472 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>❤️ I Love You ❤️</title>
+    <title>❤️ Anh Yêu Em ❤️</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            transition: all 0.5s ease;
             overflow: hidden;
             position: relative;
         }
-        .container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 40px 50px;
-            max-width: 500px;
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            position: relative;
-            z-index: 10;
-        }
-        .heart-container {
-            position: relative;
-            display: inline-block;
-            width: 120px;
-            height: 120px;
-            margin-bottom: 15px;
-            transition: all 0.5s;
-        }
-        .heart-main {
-            font-size: 100px;
-            display: block;
-            animation: pulse 1.2s infinite ease-in-out;
-            text-shadow: 0 0 40px rgba(255, 0, 100, 0.4);
-            transition: all 0.6s;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            user-select: none;
-        }
-        .heart-main.explode {
-            animation: explode 0.6s forwards ease-out;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-            50% { transform: translate(-50%, -50%) scale(1.15) rotate(-5deg); }
-        }
-        @keyframes explode {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(3) rotate(180deg); opacity: 0; }
-        }
-        h1 {
-            color: #ff6b9d;
-            font-size: 34px;
-            font-weight: 900;
-            transition: all 0.6s;
-            text-shadow: 0 0 30px rgba(255, 107, 157, 0.2);
-        }
-        .sub-text {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 15px;
-            margin-bottom: 25px;
-            font-weight: 300;
-        }
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .menu-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 14px 8px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
-        .menu-item:hover {
-            background: rgba(255, 107, 157, 0.15);
-            border-color: rgba(255, 107, 157, 0.3);
-            transform: scale(1.03);
-        }
-        .menu-item .icon {
-            display: block;
-            font-size: 20px;
-            margin-bottom: 2px;
-        }
-        .btn-chui {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #ff6b9d, #c0392b);
-            border: none;
-            border-radius: 50px;
-            color: white;
-            font-size: 18px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 10px 40px rgba(192, 57, 43, 0.3);
-            margin-top: 5px;
-        }
-        .btn-chui:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 60px rgba(192, 57, 43, 0.5);
-        }
-        #surprise {
-            display: none;
-            margin-top: 20px;
-            padding: 18px;
-            background: rgba(255, 0, 50, 0.1);
-            border: 2px solid rgba(255, 0, 50, 0.3);
-            border-radius: 20px;
-            color: #ff4d6a;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 1.6;
-            animation: shake 0.5s ease;
-            backdrop-filter: blur(10px);
-        }
-        #surprise.show {
-            display: block;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-15px); }
-            40% { transform: translateX(15px); }
-            60% { transform: translateX(-10px); }
-            80% { transform: translateX(10px); }
-        }
-        .badge {
-            display: inline-block;
-            background: rgba(255, 0, 50, 0.2);
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 11px;
-            color: #ff6b9d;
-            margin-top: 15px;
-        }
-
-        /* === HIỆU ỨNG ĐẦU LÂU BAY === */
-        .skull-particle {
-            position: fixed;
-            font-size: 40px;
-            pointer-events: none;
-            z-index: 999;
-            animation: flySkull 3s ease-in-out forwards;
-            opacity: 0;
-            user-select: none;
-        }
-        @keyframes flySkull {
-            0% {
-                transform: translate(0, 0) scale(0.5) rotate(0deg);
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-                transform: translate(20px, -40px) scale(1) rotate(10deg);
-            }
-            80% {
-                opacity: 1;
-                transform: translate(60px, -120px) scale(1.2) rotate(-15deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(100px, -200px) scale(0.8) rotate(30deg);
-            }
-        }
-
-        .skull-burst {
-            position: fixed;
-            font-size: 50px;
-            pointer-events: none;
-            z-index: 999;
-            animation: burst 1.2s ease-out forwards;
-            user-select: none;
-        }
-        @keyframes burst {
-            0% {
-                transform: translate(0, 0) scale(0.2);
-                opacity: 0;
-            }
-            30% {
-                opacity: 1;
-                transform: translate(var(--tx), var(--ty)) scale(1.2);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--tx2), var(--ty2)) scale(0.5);
-            }
-        }
-
-        /* particles nền */
-        .bg-particle {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: rgba(255, 107, 157, 0.1);
-            animation: floatParticle 20s infinite linear;
+            height: 100%;
             pointer-events: none;
             z-index: 0;
+            overflow: hidden;
         }
-        @keyframes floatParticle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        .floating-hearts span {
+            position: absolute;
+            display: block;
+            font-size: 24px;
+            animation: floatHeart 12s infinite linear;
+            opacity: 0.3;
+        }
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) rotate(720deg) scale(1.2); opacity: 0; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(233, 30, 99, 0.2);
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            animation: fadeInUp 1s ease;
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ec407a, #f06292);
+            margin: 0 auto 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 52px;
+            box-shadow: 0 10px 40px rgba(233, 30, 99, 0.3);
+            transition: all 0.5s;
+            animation: pulseAvatar 2s infinite ease-in-out;
+        }
+        @keyframes pulseAvatar {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 60px rgba(233, 30, 99, 0.4); }
+        }
+
+        .name-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 40px;
+            color: #c2185b;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .sub-text {
+            color: #ad1457;
+            font-size: 14px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .love-message {
+            background: rgba(248, 187, 208, 0.25);
+            border-radius: 20px;
+            padding: 20px 25px;
+            margin-bottom: 22px;
+            border: 1px solid rgba(233, 30, 99, 0.1);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #880e4f;
+            line-height: 1.8;
+            font-weight: 400;
+            font-style: italic;
+        }
+        .love-message .heart-icon {
+            color: #e91e63;
+            margin: 0 6px;
+        }
+
+        .btn-love {
+            background: linear-gradient(135deg, #ec407a, #c2185b);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 10px 40px rgba(233, 30, 99, 0.3);
+            width: 100%;
+            letter-spacing: 2px;
+        }
+        .btn-love:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 60px rgba(233, 30, 99, 0.4);
+        }
+        .btn-love:active {
+            transform: scale(0.97);
+        }
+
+        .love-note {
+            margin-top: 18px;
+            font-size: 13px;
+            color: #ad1457;
+            opacity: 0.6;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .love-counter {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #c2185b;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        /* Hiệu ứng bắn tim khi click */
+        .heart-burst {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            z-index: 999;
+            animation: burstHeart 1.2s ease-out forwards;
+            user-select: none;
+        }
+        @keyframes burstHeart {
+            0% { transform: scale(0.2); opacity: 0; }
+            30% { opacity: 1; transform: scale(1.4); }
+            100% { opacity: 0; transform: scale(0.5) translate(var(--tx), var(--ty)); }
+        }
+
+        .sparkle {
+            position: fixed;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 999;
+            animation: sparkleFly 2s ease-in-out forwards;
+            user-select: none;
+        }
+        @keyframes sparkleFly {
+            0% { transform: translate(0,0) scale(0); opacity: 0; }
+            30% { opacity: 1; transform: translate(20px,-60px) scale(1.2); }
+            80% { opacity: 1; }
+            100% { opacity: 0; transform: translate(80px,-180px) scale(0.6); }
         }
     </style>
 </head>
 <body>
 
-<!-- Nền particle -->
-<div id="bgParticles"></div>
+<div class="floating-hearts" id="floatingHearts"></div>
 
 <div class="container" id="mainContainer">
-    <div class="heart-container">
-        <span class="heart-main" id="heartIcon">❤️</span>
-    </div>
-    <h1 id="titleText">I Love You ❤️</h1>
-    <p class="sub-text" id="subText">✨ Tình yêu là thế giới của chúng ta ✨</p>
+    <div class="avatar" id="avatar">❤️</div>
+    <div class="name-title" id="nameTitle">Anh Yêu Em</div>
+    <p class="sub-text" id="subText">✨ Gửi đến người anh thương ✨</p>
 
-    <div class="menu-grid">
-        <div class="menu-item" onclick="chui()">
-            <span class="icon">🔥</span> Chửi 1 phát
-        </div>
-        <div class="menu-item" onclick="spamChui()">
-            <span class="icon">💀</span> Spam 10 câu
-        </div>
-        <div class="menu-item" onclick="chuiCucManh()">
-            <span class="icon">⚡</span> Chửi cực mạnh
-        </div>
-        <div class="menu-item" onclick="voiceChui()">
-            <span class="icon">📢</span> Chửi + nói
-        </div>
+    <div class="love-message" id="loveMessage">
+        <span>Anh yêu em ❤️ từ lúc yêu em</span>
     </div>
 
-    <button class="btn-chui" onclick="chui()">💝 Bấm vào đây để nhận tình yêu 💝</button>
+    <button class="btn-love" id="btnLove" onclick="showLove()">💕 Ấn vào đây để nhận yêu thương 💕</button>
 
-    <div id="surprise">
-        🔊 <span id="insultText"></span>
-    </div>
-
-    <span class="badge">💀 100% chửi thật | đầu lâu đảm bảo</span>
+    <p class="love-note" id="loveNote">❤️ 1,234,567 người đã nhận được tình yêu ❤️</p>
+    <p class="love-counter" id="loveCounter">✨ Cảm ơn em đã xuất hiện ✨</p>
 </div>
 
 <script>
-    // ========== KHO CHỬI ==========
-    const insults = [
-        "Ðcm mày! Tưởng có người yêu à? Đồ ế!",
-        "Mày mở cái này ra là mày đã bị lừa rồi!",
-        "I love you cái lồn! Mày đang bị chửi đấy!",
-        "Rảnh quá hả? Vào đây nghe chửi hả?",
-        "Mày tưởng có ai yêu mày à? Mơ đi!",
-        "Đồ ngốc! Đây là link giả để chửi mày đấy!",
-        "Mày vừa bị troll! Chúc mừng!",
-        "Tao thương mày quá! Mày tin tình yêu thật à?",
-        "Tình yêu của mày chỉ có trong mơ thôi!",
-        "Mở link này ra là mày tự nhận mình ngu đấy!",
-        "Chúc mừng! Mày đã bị lừa bởi link giả!",
-        "Tao yêu mày... yêu cái sự ngờ nghệch của mày!",
-        "Mày mà tin có người yêu á? Chắc mày ế lâu rồi!",
-        "Cảm ơn mày đã bấm vào! Tao cười mày đấy!",
-        "Mày đúng là thằng/iết sợ yêu! Đồ hèn!",
-        "I love you nhưng mà tao chửi mày đấy!",
-        "Mày tin tình yêu à? Tin tao chửi mày đi!",
-        "Link giả đấy! Mày bị lừa rồi con ạ!",
-        "Tao yêu mày... yêu cái cách mày dễ lừa!",
-        "Sao mày lại bấm vào? Mày đúng là thật thà!",
-        "Mày rảnh đến mức đi coi link troll à?",
-        "Bố mày cười mày tới rụng rốn đấy!",
-        "Mày không có người yêu nên mới bấm vào đây à?",
-        "Tao thương hại mày vãi lồn!"
+    // ===== THÔNG ĐIỆP TÌNH YÊU =====
+    const loveMessages = [
+        "Anh yêu em ❤️ từ lúc yêu em",
+        "Em là ánh sáng của đời anh ✨",
+        "Mỗi ngày anh đều nhớ em 💕",
+        "Trái tim anh chỉ dành cho em 💖",
+        "Anh yêu em ❤️ nhiều hơn cả bầu trời",
+        "Em là điều tuyệt vời nhất của anh 💗",
+        "Anh yêu em từ lúc yêu em ❤️",
+        "Đời anh có em là đủ 💘",
+        "Anh yêu em ❤️ em có biết không?",
+        "Mãi mãi yêu em 💕",
+        "Em là người anh yêu nhất ❤️",
+        "Anh yêu em ❤️ từ lúc yêu em"
     ];
 
-    // ========== HIỆU ỨNG ĐẦU LÂU BAY ==========
-    function createSkullBurst() {
-        const skulls = ['💀', '☠️', '💀', '☠️', '💀'];
+    // ===== TẠO TRÁI TIM BAY NỀN =====
+    function createFloatingHearts() {
+        const container = document.getElementById('floatingHearts');
+        const hearts = ['❤️', '💕', '💗', '💖', '💘', '💝', '✨', '🌸'];
+        for (let i = 0; i < 30; i++) {
+            const span = document.createElement('span');
+            span.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            span.style.left = Math.random() * 100 + '%';
+            span.style.animationDuration = (10 + Math.random() * 15) + 's';
+            span.style.animationDelay = (Math.random() * 12) + 's';
+            span.style.fontSize = (14 + Math.random() * 30) + 'px';
+            container.appendChild(span);
+        }
+    }
+    createFloatingHearts();
+
+    // ===== HIỆU ỨNG BẮN TIM =====
+    function createHeartBurst() {
+        const hearts = ['❤️', '💕', '💗', '💖', '💘', '💝', '✨'];
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
 
         for (let i = 0; i < 20; i++) {
             const el = document.createElement('div');
-            el.className = 'skull-burst';
-            el.textContent = skulls[Math.floor(Math.random() * skulls.length)];
-
-            const angle = (i / 20) * Math.PI * 2;
-            const distance = 150 + Math.random() * 200;
-            const tx = Math.cos(angle) * distance;
-            const ty = Math.sin(angle) * distance - 100;
-            const tx2 = Math.cos(angle) * (distance + 100);
-            const ty2 = Math.sin(angle) * (distance + 100) - 150;
-
-            el.style.left = (centerX - 25 + Math.random() * 50) + 'px';
-            el.style.top = (centerY - 25 + Math.random() * 50) + 'px';
-            el.style.setProperty('--tx', tx + 'px');
-            el.style.setProperty('--ty', ty + 'px');
-            el.style.setProperty('--tx2', tx2 + 'px');
-            el.style.setProperty('--ty2', ty2 + 'px');
-            el.style.fontSize = (30 + Math.random() * 40) + 'px';
-            el.style.animationDuration = (1 + Math.random() * 0.8) + 's';
-
+            el.className = 'heart-burst';
+            el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            const angle = (i / 20) * Math.PI * 2 + Math.random() * 0.2;
+            const dist = 100 + Math.random() * 180;
+            el.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+            el.style.setProperty('--ty', Math.sin(angle) * dist - 80 + 'px');
+            el.style.left = (centerX - 20 + Math.random() * 40) + 'px';
+            el.style.top = (centerY - 20 + Math.random() * 40) + 'px';
+            el.style.fontSize = (20 + Math.random() * 35) + 'px';
+            el.style.animationDuration = (0.8 + Math.random() * 0.8) + 's';
             document.body.appendChild(el);
-
-            setTimeout(() => el.remove(), 2000);
+            setTimeout(() => el.remove(), 1800);
         }
     }
 
-    function createSkullOrbit() {
-        const skulls = ['💀', '☠️', '💀', '☠️', '💀', '💀'];
-        const count = 8 + Math.floor(Math.random() * 6);
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-
-        for (let i = 0; i < count; i++) {
+    function createSparkles() {
+        const sparkles = ['✨', '💫', '🌟', '⭐'];
+        for (let i = 0; i < 12; i++) {
             const el = document.createElement('div');
-            el.className = 'skull-particle';
-            el.textContent = skulls[Math.floor(Math.random() * skulls.length)];
-
-            const angle = (i / count) * Math.PI * 2;
-            const radius = 80 + Math.random() * 120;
-            const x = centerX + Math.cos(angle) * radius - 20;
-            const y = centerY + Math.sin(angle) * radius - 30;
-
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            el.style.fontSize = (28 + Math.random() * 35) + 'px';
-            el.style.animationDuration = (2.5 + Math.random() * 1.5) + 's';
-
-            // Hướng bay theo góc
-            const dirAngle = angle + Math.PI / 2;
-            const dx = Math.cos(dirAngle) * (60 + Math.random() * 80);
-            const dy = Math.sin(dirAngle) * (60 + Math.random() * 80) - 60;
-
-            el.style.setProperty('--dx', dx + 'px');
-            el.style.setProperty('--dy', dy + 'px');
-
+            el.className = 'sparkle';
+            el.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+            el.style.left = (Math.random() * 80 + 10) + '%';
+            el.style.top = (Math.random() * 80 + 10) + '%';
+            el.style.fontSize = (18 + Math.random() * 25) + 'px';
+            el.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
             document.body.appendChild(el);
-
-            setTimeout(() => el.remove(), 4000);
+            setTimeout(() => el.remove(), 3500);
         }
     }
 
-    function triggerSkullEffect() {
-        createSkullBurst();
-        setTimeout(createSkullOrbit, 300);
-        setTimeout(createSkullOrbit, 800);
-    }
+    // ===== HÀM HIỂN THỊ TÌNH YÊU =====
+    function showLove() {
+        const msg = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+        document.getElementById('loveMessage').innerHTML = `<span>${msg}</span>`;
+        document.getElementById('avatar').style.animation = 'none';
+        document.getElementById('avatar').style.transform = 'scale(0.8)';
+        setTimeout(() => {
+            document.getElementById('avatar').style.transform = 'scale(1)';
+            document.getElementById('avatar').style.animation = 'pulseAvatar 2s infinite ease-in-out';
+        }, 100);
 
-    // ========== HÀM CHỬI ==========
-    function chui() {
-        const insult = insults[Math.floor(Math.random() * insults.length)];
-        showInsult(insult);
-        triggerSkullEffect();
-    }
+        // Bắn tim
+        createHeartBurst();
+        setTimeout(createHeartBurst, 300);
+        setTimeout(createSparkles, 200);
+        setTimeout(createSparkles, 500);
 
-    function spamChui() {
-        let count = 0;
-        triggerSkullEffect();
-        const interval = setInterval(() => {
-            const insult = insults[Math.floor(Math.random() * insults.length)];
-            showInsult(insult);
-            if (count % 3 === 0) triggerSkullEffect();
-            count++;
-            if (count >= 10) clearInterval(interval);
-        }, 400);
-    }
-
-    function chuiCucManh() {
-        const angry = [
-            "ĐỜI MẸ MÀY! MÀY NGU NHƯ BÒ!",
-            "MÀY MỞ LINK NÀY RA LÀ MÀY TỰ CHỬI MÌNH ĐẤY!",
-            "TÌNH YÊU CỦA MÀY CŨNG GIẢ NHƯ LINK NÀY!",
-            "TAO CHỬI MÀY VÌ MÀY QUÁ RẢNH!",
-            "MÀY ĐỈNH VÃI! VÀO ĐÂY NGHE CHỬI!"
+        // Đổi màu nhẹ
+        const colors = [
+            'linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1)',
+            'linear-gradient(135deg, #f3e5f5, #e1bee7, #ce93d8)',
+            'linear-gradient(135deg, #e8f5e9, #c8e6c9, #a5d6a7)',
+            'linear-gradient(135deg, #fff3e0, #ffcc80, #ffab91)'
         ];
-        const insult = angry[Math.floor(Math.random() * angry.length)];
-        showInsult(insult);
-        triggerSkullEffect();
-        setTimeout(triggerSkullEffect, 500);
-        setTimeout(triggerSkullEffect, 1000);
+        document.body.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        // Thêm tin nhắn
+        try { navigator.clipboard.writeText(msg); } catch(e) {}
     }
 
-    function voiceChui() {
-        const insult = insults[Math.floor(Math.random() * insults.length)];
-        showInsult(insult);
-        triggerSkullEffect();
-        const msg = new SpeechSynthesisUtterance(insult);
-        msg.lang = 'vi-VN';
-        msg.rate = 0.9;
-        msg.pitch = 1.1;
-        speechSynthesis.speak(msg);
-    }
+    // ===== TỰ ĐỘNG HIỆN TÌNH YÊU MỖI 10 GIÂY =====
+    let autoLoveInterval = setInterval(() => {
+        showLove();
+    }, 12000);
 
-    // ========== HIỂN THỊ CHỬI ==========
-    function showInsult(insult) {
-        // Vỡ tim
-        const heart = document.getElementById('heartIcon');
-        heart.classList.remove('explode');
-        void heart.offsetWidth;
-        heart.classList.add('explode');
+    // ===== HOVER VÀO AVATAR CŨNG BẮN TIM =====
+    document.getElementById('avatar').addEventListener('mouseenter', () => {
+        createHeartBurst();
+        createSparkles();
+    });
 
-        setTimeout(() => {
-            heart.textContent = '💀';
-            heart.classList.remove('explode');
-            heart.style.animation = 'none';
-            heart.style.transform = 'translate(-50%, -50%) scale(1)';
-        }, 600);
-
-        const surprise = document.getElementById('surprise');
-        document.getElementById('insultText').textContent = insult;
-        surprise.classList.add('show');
-
-        try { navigator.clipboard.writeText(insult); } catch(e) {}
-
-        document.body.style.background = 'linear-gradient(135deg, #1a1a2e, #16213e, #0f0c29)';
-        document.getElementById('mainContainer').style.background = 'rgba(20, 10, 20, 0.85)';
-        document.getElementById('mainContainer').style.borderColor = 'rgba(255, 0, 50, 0.4)';
-        document.getElementById('titleText').textContent = '🔥 MÀY BỊ LỪA RỒI! 🔥';
-        document.getElementById('titleText').style.color = '#ff4d6a';
-        document.getElementById('subText').textContent = '💀 Cút đi cho đời bớt rác 💀';
-        document.getElementById('subText').style.color = 'rgba(255, 0, 50, 0.6)';
-
-        document.getElementById('mainContainer').style.animation = 'shake 0.5s ease';
-        setTimeout(() => {
-            document.getElementById('mainContainer').style.animation = '';
-        }, 600);
-    }
-
-    // ========== TẠO PARTICLE NỀN ==========
-    function createBgParticles() {
-        const container = document.getElementById('bgParticles');
-        for (let i = 0; i < 35; i++) {
-            const p = document.createElement('div');
-            p.className = 'bg-particle';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.animationDuration = (14 + Math.random() * 20) + 's';
-            p.style.animationDelay = (Math.random() * 15) + 's';
-            p.style.width = p.style.height = (3 + Math.random() * 6) + 'px';
-            p.style.background = `rgba(255, ${50 + Math.random() * 100}, ${100 + Math.random() * 100}, 0.1)`;
-            container.appendChild(p);
-        }
-    }
-    createBgParticles();
-
-    // Click vào tim để chửi luôn
-    document.getElementById('heartIcon').addEventListener('click', chui);
+    // ===== TẠO HIỆU ỨNG KHI LOAD =====
+    setTimeout(showLove, 1000);
+    setTimeout(createHeartBurst, 1500);
+    setTimeout(createSparkles, 2000);
 </script>
 </body>
-  </html>
+</html>
