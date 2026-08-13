@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ I Love You ❤️</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff6b6b, #c0392b);
+    font-family: Arial, sans-serif;
+    transition: all 0.5s;
+}
+.container {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 500px;
+}
+.heart {
+    font-size: 80px;
+    animation: pulse 1s infinite;
+    display: block;
+}
+@keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+h1 {
+    color: #c0392b;
+    font-size: 36px;
+    margin: 20px 0 10px;
+}
+p {
+    color: #666;
+    font-size: 18px;
+}
+.btn {
+    background: linear-gradient(135deg, #ff6b6b, #c0392b);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+}
+#surprise {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: #1a1a2e;
+    border-radius: 15px;
+    border: 2px solid #ff4444;
+    font-size: 24px;
+    color: #ff4444;
+    font-weight: bold;
+}
+#surprise.show {
+    display: block;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<span class="heart">❤️</span>
+<h1>I Love You ❤️</h1>
+<p>Anh/Em yêu bạn rất nhiều!<br>❤️ Tình yêu là thế giới của chúng ta ❤️</p>
+<button class="btn" onclick="showSurprise()">💝 Nhấn vào đây để nhận tình yêu 💝</button>
+<div id="surprise">
+🔥 ================================= 🔥<br>
+<span id="insultText"></span><br>
+🔥 ================================= 🔥
+</div>
+</div>
+<script>
+var insults = [
+"Ðcm mày! Tưởng có người yêu à? Đồ ế!",
+"Mày mở cái này ra là mày đã bị lừa rồi!",
+"I love you cái lồn! Mày đang bị chửi đấy!",
+"Rảnh quá hả? Vào đây nghe chửi hả?",
+"Mày tưởng có ai yêu mày à? Mơ đi!",
+"Đồ ngốc! Đây là link giả để chửi mày đấy!",
+"Mày vừa bị troll! Chúc mừng!",
+"Tao thương mày quá! Mày tin tình yêu thật à?",
+"Tình yêu của mày chỉ có trong mơ thôi!",
+"Mở link này ra là mày tự nhận mình ngu đấy!",
+"Chúc mừng! Mày đã bị lừa bởi link giả!",
+"Tao yêu mày... yêu cái sự ngờ nghệch của mày!",
+"Mày mà tin có người yêu á? Chắc mày ế lâu rồi!",
+"Cảm ơn mày đã bấm vào! Tao cười mày đấy!",
+"Mày đúng là thằng hèn! Đồ sợ yêu!",
+"I love you nhưng mà tao chửi mày đấy!",
+"Mày tin tình yêu à? Tin tao chửi mày đi!",
+"Link giả đấy! Mày bị lừa rồi con ạ!",
+"Tao yêu mày... yêu cái cách mày dễ lừa!",
+"Sao mày lại bấm vào? Mày đúng là thật thà!"
+];
+function showSurprise() {
+var insult = insults[Math.floor(Math.random() * insults.length)];
+document.getElementById('insultText').textContent = insult;
+document.getElementById('surprise').className = 'show';
+document.body.style.background = 'linear-gradient(135deg, #1a1a2e, #16213e)';
+document.querySelector('.container').style.background = '#2d2d2d';
+document.querySelector('h1').style.color = '#ff4444';
+document.querySelector('h1').textContent = '🔥 MÀY BỊ LỪA RỒI! 🔥';
+document.querySelector('.heart').textContent = '💀';
+document.querySelector('.btn').style.display = 'none';
+try { navigator.clipboard.writeText(insult); } catch(e) {}
+}
+window.onload = function() {
+setTimeout(function() {
+var first = insults[Math.floor(Math.random() * insults.length)];
+try { navigator.clipboard.writeText(first); } catch(e) {}
+}, 3000);
+};
+</script>
+</body>
+</html>
