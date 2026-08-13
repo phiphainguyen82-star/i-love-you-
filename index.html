@@ -1,40 +1,474 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️ I Love You ❤️</title>
-<style>
-body { background: linear-gradient(135deg, #ff6b6b, #c0392b); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; font-family: Arial; }
-.container { background: white; padding: 40px; border-radius: 30px; text-align: center; max-width: 400px; }
-.heart { font-size: 80px; display: block; animation: pulse 1s infinite; }
-@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-h1 { color: #c0392b; }
-.btn { background: #c0392b; color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 18px; cursor: pointer; }
-#surprise { display: none; margin-top: 20px; padding: 20px; background: #1a1a2e; border-radius: 15px; color: #ff4444; font-size: 20px; font-weight: bold; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ I Love You ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px 50px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            z-index: 10;
+        }
+        .heart-container {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+            transition: all 0.5s;
+        }
+        .heart-main {
+            font-size: 100px;
+            display: block;
+            animation: pulse 1.2s infinite ease-in-out;
+            text-shadow: 0 0 40px rgba(255, 0, 100, 0.4);
+            transition: all 0.6s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            user-select: none;
+        }
+        .heart-main.explode {
+            animation: explode 0.6s forwards ease-out;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) scale(1.15) rotate(-5deg); }
+        }
+        @keyframes explode {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(3) rotate(180deg); opacity: 0; }
+        }
+        h1 {
+            color: #ff6b9d;
+            font-size: 34px;
+            font-weight: 900;
+            transition: all 0.6s;
+            text-shadow: 0 0 30px rgba(255, 107, 157, 0.2);
+        }
+        .sub-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 15px;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .menu-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        .menu-item:hover {
+            background: rgba(255, 107, 157, 0.15);
+            border-color: rgba(255, 107, 157, 0.3);
+            transform: scale(1.03);
+        }
+        .menu-item .icon {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+        .btn-chui {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ff6b9d, #c0392b);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 10px 40px rgba(192, 57, 43, 0.3);
+            margin-top: 5px;
+        }
+        .btn-chui:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 60px rgba(192, 57, 43, 0.5);
+        }
+        #surprise {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: rgba(255, 0, 50, 0.1);
+            border: 2px solid rgba(255, 0, 50, 0.3);
+            border-radius: 20px;
+            color: #ff4d6a;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.6;
+            animation: shake 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+        #surprise.show {
+            display: block;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(15px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255, 0, 50, 0.2);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            color: #ff6b9d;
+            margin-top: 15px;
+        }
+
+        /* === HIỆU ỨNG ĐẦU LÂU BAY === */
+        .skull-particle {
+            position: fixed;
+            font-size: 40px;
+            pointer-events: none;
+            z-index: 999;
+            animation: flySkull 3s ease-in-out forwards;
+            opacity: 0;
+            user-select: none;
+        }
+        @keyframes flySkull {
+            0% {
+                transform: translate(0, 0) scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                transform: translate(20px, -40px) scale(1) rotate(10deg);
+            }
+            80% {
+                opacity: 1;
+                transform: translate(60px, -120px) scale(1.2) rotate(-15deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(100px, -200px) scale(0.8) rotate(30deg);
+            }
+        }
+
+        .skull-burst {
+            position: fixed;
+            font-size: 50px;
+            pointer-events: none;
+            z-index: 999;
+            animation: burst 1.2s ease-out forwards;
+            user-select: none;
+        }
+        @keyframes burst {
+            0% {
+                transform: translate(0, 0) scale(0.2);
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+                transform: translate(var(--tx), var(--ty)) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx2), var(--ty2)) scale(0.5);
+            }
+        }
+
+        /* particles nền */
+        .bg-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255, 107, 157, 0.1);
+            animation: floatParticle 20s infinite linear;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<span class="heart">❤️</span>
-<h1>I Love You ❤️</h1>
-<button class="btn" onclick="chui()">💝 Nhấn vào đây 💝</button>
-<div id="surprise"></div>
+
+<!-- Nền particle -->
+<div id="bgParticles"></div>
+
+<div class="container" id="mainContainer">
+    <div class="heart-container">
+        <span class="heart-main" id="heartIcon">❤️</span>
+    </div>
+    <h1 id="titleText">I Love You ❤️</h1>
+    <p class="sub-text" id="subText">✨ Tình yêu là thế giới của chúng ta ✨</p>
+
+    <div class="menu-grid">
+        <div class="menu-item" onclick="chui()">
+            <span class="icon">🔥</span> Chửi 1 phát
+        </div>
+        <div class="menu-item" onclick="spamChui()">
+            <span class="icon">💀</span> Spam 10 câu
+        </div>
+        <div class="menu-item" onclick="chuiCucManh()">
+            <span class="icon">⚡</span> Chửi cực mạnh
+        </div>
+        <div class="menu-item" onclick="voiceChui()">
+            <span class="icon">📢</span> Chửi + nói
+        </div>
+    </div>
+
+    <button class="btn-chui" onclick="chui()">💝 Bấm vào đây để nhận tình yêu 💝</button>
+
+    <div id="surprise">
+        🔊 <span id="insultText"></span>
+    </div>
+
+    <span class="badge">💀 100% chửi thật | đầu lâu đảm bảo</span>
 </div>
+
 <script>
-const insults = ["Ðcm mày! yêu boooo honggg? títttt xấuuu!", "Mày bị lừa rồi con ạ!", "I love you cái lồn!", "Rảnh quá hả? Vào đây nghe chửi!", "Đồ ngu!", "Mày tin tình yêu à? Mơ đi!", "Tao cười mày đấy!", "Mày vừa bị troll! Chúc mừng!", "Tình yêu của mày chỉ có trong mơ thôi!"];
-function chui() {
-const insult = insults[Math.floor(Math.random() * insults.length)];
-document.getElementById('surprise').innerHTML = '🔥 ' + insult + ' 🔥';
-document.getElementById('surprise').style.display = 'block';
-document.body.style.background = 'linear-gradient(135deg, #1a1a2e, #16213e)';
-document.querySelector('.container').style.background = '#2d2d2d';
-document.querySelector('h1').style.color = '#ff4444';
-document.querySelector('h1').textContent = '🔥 MÀY BỊ LỪA RỒI! 🔥';
-document.querySelector('.heart').textContent = '💀';
-document.querySelector('.btn').style.display = 'none';
-try { navigator.clipboard.writeText(insult); } catch(e) {}
-}
+    // ========== KHO CHỬI ==========
+    const insults = [
+        "Ðcm mày! Tưởng có người yêu à? Đồ ế!",
+        "Mày mở cái này ra là mày đã bị lừa rồi!",
+        "I love you cái lồn! Mày đang bị chửi đấy!",
+        "Rảnh quá hả? Vào đây nghe chửi hả?",
+        "Mày tưởng có ai yêu mày à? Mơ đi!",
+        "Đồ ngốc! Đây là link giả để chửi mày đấy!",
+        "Mày vừa bị troll! Chúc mừng!",
+        "Tao thương mày quá! Mày tin tình yêu thật à?",
+        "Tình yêu của mày chỉ có trong mơ thôi!",
+        "Mở link này ra là mày tự nhận mình ngu đấy!",
+        "Chúc mừng! Mày đã bị lừa bởi link giả!",
+        "Tao yêu mày... yêu cái sự ngờ nghệch của mày!",
+        "Mày mà tin có người yêu á? Chắc mày ế lâu rồi!",
+        "Cảm ơn mày đã bấm vào! Tao cười mày đấy!",
+        "Mày đúng là thằng/iết sợ yêu! Đồ hèn!",
+        "I love you nhưng mà tao chửi mày đấy!",
+        "Mày tin tình yêu à? Tin tao chửi mày đi!",
+        "Link giả đấy! Mày bị lừa rồi con ạ!",
+        "Tao yêu mày... yêu cái cách mày dễ lừa!",
+        "Sao mày lại bấm vào? Mày đúng là thật thà!",
+        "Mày rảnh đến mức đi coi link troll à?",
+        "Bố mày cười mày tới rụng rốn đấy!",
+        "Mày không có người yêu nên mới bấm vào đây à?",
+        "Tao thương hại mày vãi lồn!"
+    ];
+
+    // ========== HIỆU ỨNG ĐẦU LÂU BAY ==========
+    function createSkullBurst() {
+        const skulls = ['💀', '☠️', '💀', '☠️', '💀'];
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        for (let i = 0; i < 20; i++) {
+            const el = document.createElement('div');
+            el.className = 'skull-burst';
+            el.textContent = skulls[Math.floor(Math.random() * skulls.length)];
+
+            const angle = (i / 20) * Math.PI * 2;
+            const distance = 150 + Math.random() * 200;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance - 100;
+            const tx2 = Math.cos(angle) * (distance + 100);
+            const ty2 = Math.sin(angle) * (distance + 100) - 150;
+
+            el.style.left = (centerX - 25 + Math.random() * 50) + 'px';
+            el.style.top = (centerY - 25 + Math.random() * 50) + 'px';
+            el.style.setProperty('--tx', tx + 'px');
+            el.style.setProperty('--ty', ty + 'px');
+            el.style.setProperty('--tx2', tx2 + 'px');
+            el.style.setProperty('--ty2', ty2 + 'px');
+            el.style.fontSize = (30 + Math.random() * 40) + 'px';
+            el.style.animationDuration = (1 + Math.random() * 0.8) + 's';
+
+            document.body.appendChild(el);
+
+            setTimeout(() => el.remove(), 2000);
+        }
+    }
+
+    function createSkullOrbit() {
+        const skulls = ['💀', '☠️', '💀', '☠️', '💀', '💀'];
+        const count = 8 + Math.floor(Math.random() * 6);
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            el.className = 'skull-particle';
+            el.textContent = skulls[Math.floor(Math.random() * skulls.length)];
+
+            const angle = (i / count) * Math.PI * 2;
+            const radius = 80 + Math.random() * 120;
+            const x = centerX + Math.cos(angle) * radius - 20;
+            const y = centerY + Math.sin(angle) * radius - 30;
+
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            el.style.fontSize = (28 + Math.random() * 35) + 'px';
+            el.style.animationDuration = (2.5 + Math.random() * 1.5) + 's';
+
+            // Hướng bay theo góc
+            const dirAngle = angle + Math.PI / 2;
+            const dx = Math.cos(dirAngle) * (60 + Math.random() * 80);
+            const dy = Math.sin(dirAngle) * (60 + Math.random() * 80) - 60;
+
+            el.style.setProperty('--dx', dx + 'px');
+            el.style.setProperty('--dy', dy + 'px');
+
+            document.body.appendChild(el);
+
+            setTimeout(() => el.remove(), 4000);
+        }
+    }
+
+    function triggerSkullEffect() {
+        createSkullBurst();
+        setTimeout(createSkullOrbit, 300);
+        setTimeout(createSkullOrbit, 800);
+    }
+
+    // ========== HÀM CHỬI ==========
+    function chui() {
+        const insult = insults[Math.floor(Math.random() * insults.length)];
+        showInsult(insult);
+        triggerSkullEffect();
+    }
+
+    function spamChui() {
+        let count = 0;
+        triggerSkullEffect();
+        const interval = setInterval(() => {
+            const insult = insults[Math.floor(Math.random() * insults.length)];
+            showInsult(insult);
+            if (count % 3 === 0) triggerSkullEffect();
+            count++;
+            if (count >= 10) clearInterval(interval);
+        }, 400);
+    }
+
+    function chuiCucManh() {
+        const angry = [
+            "ĐỜI MẸ MÀY! MÀY NGU NHƯ BÒ!",
+            "MÀY MỞ LINK NÀY RA LÀ MÀY TỰ CHỬI MÌNH ĐẤY!",
+            "TÌNH YÊU CỦA MÀY CŨNG GIẢ NHƯ LINK NÀY!",
+            "TAO CHỬI MÀY VÌ MÀY QUÁ RẢNH!",
+            "MÀY ĐỈNH VÃI! VÀO ĐÂY NGHE CHỬI!"
+        ];
+        const insult = angry[Math.floor(Math.random() * angry.length)];
+        showInsult(insult);
+        triggerSkullEffect();
+        setTimeout(triggerSkullEffect, 500);
+        setTimeout(triggerSkullEffect, 1000);
+    }
+
+    function voiceChui() {
+        const insult = insults[Math.floor(Math.random() * insults.length)];
+        showInsult(insult);
+        triggerSkullEffect();
+        const msg = new SpeechSynthesisUtterance(insult);
+        msg.lang = 'vi-VN';
+        msg.rate = 0.9;
+        msg.pitch = 1.1;
+        speechSynthesis.speak(msg);
+    }
+
+    // ========== HIỂN THỊ CHỬI ==========
+    function showInsult(insult) {
+        // Vỡ tim
+        const heart = document.getElementById('heartIcon');
+        heart.classList.remove('explode');
+        void heart.offsetWidth;
+        heart.classList.add('explode');
+
+        setTimeout(() => {
+            heart.textContent = '💀';
+            heart.classList.remove('explode');
+            heart.style.animation = 'none';
+            heart.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 600);
+
+        const surprise = document.getElementById('surprise');
+        document.getElementById('insultText').textContent = insult;
+        surprise.classList.add('show');
+
+        try { navigator.clipboard.writeText(insult); } catch(e) {}
+
+        document.body.style.background = 'linear-gradient(135deg, #1a1a2e, #16213e, #0f0c29)';
+        document.getElementById('mainContainer').style.background = 'rgba(20, 10, 20, 0.85)';
+        document.getElementById('mainContainer').style.borderColor = 'rgba(255, 0, 50, 0.4)';
+        document.getElementById('titleText').textContent = '🔥 MÀY BỊ LỪA RỒI! 🔥';
+        document.getElementById('titleText').style.color = '#ff4d6a';
+        document.getElementById('subText').textContent = '💀 Cút đi cho đời bớt rác 💀';
+        document.getElementById('subText').style.color = 'rgba(255, 0, 50, 0.6)';
+
+        document.getElementById('mainContainer').style.animation = 'shake 0.5s ease';
+        setTimeout(() => {
+            document.getElementById('mainContainer').style.animation = '';
+        }, 600);
+    }
+
+    // ========== TẠO PARTICLE NỀN ==========
+    function createBgParticles() {
+        const container = document.getElementById('bgParticles');
+        for (let i = 0; i < 35; i++) {
+            const p = document.createElement('div');
+            p.className = 'bg-particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = (14 + Math.random() * 20) + 's';
+            p.style.animationDelay = (Math.random() * 15) + 's';
+            p.style.width = p.style.height = (3 + Math.random() * 6) + 'px';
+            p.style.background = `rgba(255, ${50 + Math.random() * 100}, ${100 + Math.random() * 100}, 0.1)`;
+            container.appendChild(p);
+        }
+    }
+    createBgParticles();
+
+    // Click vào tim để chửi luôn
+    document.getElementById('heartIcon').addEventListener('click', chui);
 </script>
 </body>
-</html>
+  </html>
